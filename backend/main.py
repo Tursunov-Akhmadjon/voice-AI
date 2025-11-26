@@ -5,17 +5,13 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import os
 from dotenv import load_dotenv
-
 load_dotenv()
-
 from services.llm_service import llm_service, transliterate_to_cyrillic
 from services.rag_service import rag_service
 from services.cache_service import cache_service
 from services.conversation_service import conversation_service
 from services.tts_service import tts_service
-
 app = FastAPI()
-
 # CORS configuration
 app.add_middleware(
     CORSMiddleware,
@@ -24,30 +20,25 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # Mount static files
 app.mount("/static", StaticFiles(directory="../frontend"), name="static")
-
 class ChatRequest(BaseModel):
     message: str
     session_id: str = None
     version: int = 1  # 1 = Assistant 1 (Browser TTS), 2 = Assistant 2 (Backend TTS)
-
 @app.get("/")
+@app.head("/")
 async def read_index():
     return FileResponse('../frontend/index.html')
-
 @app.get("/api/session")
 async def create_session():
     """Create new conversation session"""
     session_id = conversation_service.create_session()
     return {"session_id": session_id}
-
 @app.get("/api/cache/stats")
 async def cache_stats():
     """Get cache statistics"""
     return cache_service.get_stats()
-
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     """
