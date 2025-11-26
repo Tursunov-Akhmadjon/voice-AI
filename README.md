@@ -25,7 +25,7 @@ An intelligent voice assistant for Axborot Texnologiyalari va Menejment Universi
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/atmu-ai-assistant.git
+git clone https://github.com/Tursunov-Akhmadjon/voice-AI.git
 cd atmu-ai-assistant
 ```
 
