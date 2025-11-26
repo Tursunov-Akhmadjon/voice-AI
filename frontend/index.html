@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATMURA</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 ATMURA </h1>
+            <p>Men Axborot Texnologiyalari va Menejment Universiteti AI yordamchisiman.</p>
+        </header>
+
+        <div id="chat-box" class="chat-box">
+            <div class="message ai">
+                <div class="bubble">Assalomu alaykum! Sizga qanday yordam bera olaman?</div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <button id="mic-btn" class="icon-btn" title="Ovozli yozish">
+                🎤
+            </button>
+            <input type="text" id="user-input" placeholder="Savolingizni yozing..." />
+            <button id="send-btn" class="icon-btn send">
+                ➤
+            </button>
+        </div>
+        <div id="status" class="status-text"></div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
