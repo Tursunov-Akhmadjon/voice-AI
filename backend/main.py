@@ -12,10 +12,10 @@ from services.cache_service import cache_service
 from services.conversation_service import conversation_service
 from services.tts_service import tts_service
 
-from pathlib import Path
+# from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-FRONTEND_DIR = BASE_DIR / "frontend"
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# FRONTEND_DIR = BASE_DIR / "frontend"
 
 
 app = FastAPI()
@@ -28,7 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 # Mount static files
-app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
+app.mount("/static", StaticFiles(directory='../frontend'), name="static")
 class ChatRequest(BaseModel):
     message: str
     session_id: str = None
@@ -36,7 +36,7 @@ class ChatRequest(BaseModel):
 @app.get("/")
 @app.head("/")
 async def read_index():
-    return FileResponse(FRONTEND_DIR / 'index.html')
+    return FileResponse('../frontend/index.html')
 @app.get("/api/session")
 async def create_session():
     """Create new conversation session"""
